@@ -1,57 +1,73 @@
-Student Management API
-The Student Management API is a Node.js and Express-based application designed to manage student records. The API provides functionalities to create, retrieve, update, and delete student data.
+Student Management API is a Node.js and Express-based application designed to manage student records with full CRUD operations on student data.[1][5]
 
-Folder Structure
-The project follows a structured folder layout for better organization:
+## Overview
 
-src/: This folder contains the primary application code.
-app.js: Entry point for the Express application, where routes and middleware are configured.
-index.js: Manages the server connection.
-controllers/: Contains the controller logic for handling HTTP requests.
-studentController.js: Defines routes and implements CRUD operations for students.
-data/: Contains student data.
-data.json: Contains the predefined data file.
-routes/: Contains route definitions for the API.
-studentRoutes.js: Defines API endpoints and routes for student-related operations.
-API Endpoints
-Get All Students
-Endpoint: GET /api/students
-Description: Retrieve all students.
-Query Parameters:
-sort (optional): Sort students by grade in ascending order (grade) or descending order (gradeDesc).
-Response: If successful, returns a 200 OK status code with an array of student data. If there's an error, it returns a 500 Internal Server Error status code with an "Internal server error" message.
-Get Student by ID
-Endpoint: GET /api/students/:id
-Description: Retrieve a student by their ID.
-Request Parameter:
-id: The ID of the student to retrieve.
-Response: If the student is found, it returns a 200 OK status code with a message indicating "Student data" and the student's details. If the student is not found, it returns a 404 Not Found status code with a "Student not found" message. If there's an error, it returns a 500 Internal Server Error status code with an "Internal server error" message.
-Create Student
-Endpoint: POST /api/students
-Description: Create a new student.
-Request Body: JSON object containing student data (e.g., name, grade).
-Response: If successful, returns a 201 Created status code with a message indicating "Student created" and the student's details. If there's an error, it returns a 500 Internal Server Error status code with an "Internal server error" message.
-Update Student
-Endpoint: PATCH /api/students/:id
-Description: Update an existing student by their ID.
-Request Parameter:
-id: The ID of the student to update.
-Request Body: JSON object containing the updated student data (e.g., name, grade).
-Response: If the student is updated successfully, it returns a 200 OK status code with a message indicating "Student updated" and the updated student's details. If the student is not found, it returns a 404 Not Found status code with a "Student not found" message. If there's an error, it returns a 500 Internal Server Error status code with an "Internal server error" message.
-Delete Student
-Endpoint: DELETE /api/students/:id
-Description: Delete a student by their ID.
-Request Parameter:
-id: The ID of the student to delete.
-Response: If the student is deleted successfully, it returns a 200 OK status code with a message indicating "Student deleted" and the deleted student's details. If the student is not found, it returns a 404 Not Found status code with a "Student not found" message. If there's an error, it returns a 500 Internal Server Error status code with an "Internal server error" message.
-Usage
-To utilize the Student Management API, send HTTP requests to the specified endpoints using appropriate HTTP methods (e.g., POST, GET, PATCH, DELETE), along with the required data (if applicable) in the request body or parameters.
+The Student Management API allows clients to create, retrieve, update, and delete student information through RESTful HTTP endpoints.[9][1]
+It is built with Node.js and Express, following a structured folder layout for maintainability and clarity.[5][11]
 
-Code Reference
-The Student Management API code can be found in the controllers/studentController.js file. It contains functions for handling API endpoints related to student management, including creating, retrieving, updating, and deleting student records.
+## Folder structure
 
-getAllStudents: Retrieve all students.
-getStudentById: Retrieve a student by ID.
-createStudent: Create a new student.
-updateStudent: Update an existing student.
-deleteStudent: Delete a student.
+- src/: Primary application source code.[5]
+  - app.js: Entry point where the Express app, routes, and middleware are configured.[9]
+  - index.js: Manages server startup and connection.[5]
+- controllers/: Contains request-handling logic.[13]
+  - studentController.js: Implements CRUD operations for students.[12]
+- data/: Stores student data files.[5]
+  - data.json: Predefined student data.[12]
+- routes/: Defines API routes.[9]
+  - studentRoutes.js: Maps student-related endpoints to controller functions.[13]
+
+## API endpoints
+
+- Get All Students  
+  - Method: GET /api/students  
+  - Description: Retrieve all students, with optional sorting by grade using the sort query parameter (grade or gradeDesc).[8]
+  - Responses:  
+    - 200 OK with an array of students on success.[14]
+    - 500 Internal Server Error with a generic error message on failure.[14]
+
+- Get Student by ID  
+  - Method: GET /api/students/:id  
+  - Description: Retrieve a single student by ID.[8]
+  - Responses:  
+    - 200 OK with a “Student data” message and student details if found.[14]
+    - 404 Not Found with “Student not found” if the ID does not exist.[14]
+    - 500 Internal Server Error on unexpected errors.[14]
+
+- Create Student  
+  - Method: POST /api/students  
+  - Description: Create a new student using a JSON body (for example, name and grade).[8]
+  - Responses:  
+    - 201 Created with “Student created” and the new student details on success.[14]
+    - 500 Internal Server Error on failure.[14]
+
+- Update Student  
+  - Method: PATCH /api/students/:id  
+  - Description: Partially update an existing student’s data by ID.[8]
+  - Responses:  
+    - 200 OK with “Student updated” and updated details on success.[14]
+    - 404 Not Found with “Student not found” if the ID does not exist.[14]
+    - 500 Internal Server Error on unexpected errors.[14]
+
+- Delete Student  
+  - Method: DELETE /api/students/:id  
+  - Description: Delete a student record by ID.[8]
+  - Responses:  
+    - 200 OK with “Student deleted” and deleted student details on success.[14]
+    - 404 Not Found with “Student not found” if the ID does not exist.[14]
+    - 500 Internal Server Error on unexpected errors.[14]
+
+## Usage
+
+To use the Student Management API, send HTTP requests to the defined endpoints with the appropriate methods (GET, POST, PATCH, DELETE).[11][9]
+Include any required parameters in the URL path or query string, and provide JSON request bodies when creating or updating students.[1][13]
+
+## Code reference
+
+Core API logic resides in controllers/studentController.js, which contains the handler functions for student operations.[16][12]
+Key controller functions include:  
+- getAllStudents: Retrieve all students, with optional sorting.[12]
+- getStudentById: Retrieve a student by ID.[12]
+- createStudent: Create a new student record.[12]
+- updateStudent: Apply updates to an existing student.[12]
+- deleteStudent: Remove a student record by ID.[12]
